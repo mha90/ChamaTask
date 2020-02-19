@@ -1,0 +1,4 @@
+<resources>
+    <string name="app_name">ChamaTask</string>
+    <string name="error_reading_data">Error while reading data</string>
+</resources>
