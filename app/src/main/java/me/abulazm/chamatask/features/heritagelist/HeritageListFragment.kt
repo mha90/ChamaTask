@@ -8,7 +8,6 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
-import androidx.paging.PagedList
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import me.abulazm.chamatask.R
@@ -35,16 +34,12 @@ class HeritageListFragment : Fragment(), HeritageListAdapter.OnHeritageItemClick
         val viewModel = HeritageListViewModel(heritageDao)
         val recyclerView = fragmentView.findViewById<RecyclerView>(R.id.heritageRecyclerView)
         val adapter = HeritageListAdapter(this)
-        viewModel.itemsLiveData.observe(viewLifecycleOwner, getObserver(adapter))
+        viewModel.itemsLiveData.observe(viewLifecycleOwner, Observer {
+            adapter.submitList(it)
+        })
         recyclerView.layoutManager = LinearLayoutManager(activity!!, RecyclerView.VERTICAL, false)
         recyclerView.adapter = adapter
         return fragmentView
-    }
-
-    private fun getObserver(adapter: HeritageListAdapter): Observer<PagedList<HeritageItem>> {
-        return Observer {
-            adapter.submitList(it)
-        }
     }
 
     private fun getHeritageDao(): HeritageDao {

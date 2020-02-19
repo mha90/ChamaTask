@@ -7,8 +7,6 @@ import kotlinx.coroutines.withContext
 import java.io.IOException
 import java.nio.charset.Charset
 
-
-// could be a ext function to Context
 suspend fun Context.readDataFromRawFile(@RawRes rawJsonFileId: Int) =
     withContext(Dispatchers.IO) {
         val content: String?

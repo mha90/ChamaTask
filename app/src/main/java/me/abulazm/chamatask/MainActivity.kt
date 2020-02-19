@@ -9,7 +9,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import kotlinx.coroutines.MainScope
 import kotlinx.coroutines.launch
-import me.abulazm.chamatask.data.local.HeritageItemInsertImpl
+import me.abulazm.chamatask.data.database.HeritageItemInsertImpl
 import me.abulazm.chamatask.data.local.JsonHelper
 import me.abulazm.chamatask.data.model.HeritageItem
 import me.abulazm.chamatask.features.heritagelist.HeritageListFragment
@@ -17,6 +17,7 @@ import me.abulazm.chamatask.utils.isDatabaseInitialized
 import me.abulazm.chamatask.utils.readDataFromRawFile
 
 class MainActivity : AppCompatActivity() {
+
     private val viewSwitcher: ViewSwitcher by lazy { findViewById<ViewSwitcher>(R.id.mainActivityViewSwitcher) }
     private val errorTextView: TextView by lazy { findViewById<TextView>(R.id.errorTextView) }
     private val progressView: ProgressBar by lazy { findViewById<ProgressBar>(R.id.progressBar) }
